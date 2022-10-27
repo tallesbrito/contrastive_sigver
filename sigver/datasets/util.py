@@ -1,5 +1,6 @@
 import numpy as np
 import functools
+import os
 from tqdm import tqdm
 from sigver.datasets.base import IterableDataset
 from sigver.preprocessing.normalize import preprocess_signature
@@ -26,11 +27,26 @@ def load_dataset(path: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray, Dict, n
     -------
 
     """
-    with np.load(path, allow_pickle=True) as data:
-        x, y, yforg = data['x'], data['y'], data['yforg']
-        user_mapping, filenames = data['user_mapping'], data['filenames']
+    #in case of loading a npz file
+    if os.path.isfile(path):
 
-    return x, y, yforg, user_mapping, filenames
+        with np.load(path, allow_pickle=True) as data:
+            x, y, yforg = data['x'], data['y'], data['yforg']
+            user_mapping, filenames = data['user_mapping'], data['filenames']
+
+        return x, y, yforg, user_mapping, filenames
+
+    #else in case of loading a set of npy files inside a folder with memory mapping
+    else:
+        print('Dataset is accessed with memory mapping for fast loading.')
+
+        x = np.load(path + '/' + 'x.npy', mmap_mode='c')
+        y = np.load(path + '/' + 'y.npy', mmap_mode='c')
+        yforg = np.load(path + '/' + 'yforg.npy', mmap_mode='c')
+        user_mapping = np.load(path + '/' + 'user_mapping.npy', allow_pickle=True)
+        filenames = np.load(path + '/' + 'filenames.npy', allow_pickle=True)
+
+        return x, y, yforg, user_mapping, filenames
 
 
 def process_dataset(dataset: IterableDataset,

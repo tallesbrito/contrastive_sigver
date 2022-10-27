@@ -79,7 +79,7 @@ if __name__ == '__main__':
     parser.add_argument('--input-size', nargs=2, default=(150, 220))
 
     parser.add_argument('--exp-users', type=int, nargs=2, default=(0, 300))
-    parser.add_argument('--dev-users', type=int, nargs=2, default=(300, 881))
+    parser.add_argument('--dev-users', type=int, nargs=2, default=(5000, 7000))
 
     parser.add_argument('--gen-for-train', type=int, default=12)
     parser.add_argument('--gen-for-test', type=int, default=10)
