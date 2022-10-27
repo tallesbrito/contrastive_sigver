@@ -69,7 +69,7 @@ For training and testing the WD classifiers, use the ```sigver.wd.test``` script
 ```bash
 python -m sigver.wd.test --model-path <path/to/trained_model> \
     --data-path <path/to/data> --save-path <path/to/save> \
-    --exp-users 0 300 --dev-users 300 881 --gen-for-train 12
+    --exp-users 0 300 --dev-users 5000 7000 --gen-for-train 12
 ```
 The parameter ```--gen-for-train``` defines the number of reference signatures for each user of the exploitation set in WD approach.
 
@@ -86,7 +86,7 @@ For training and testing the WI classifiers, use the ```sigver.wi.test``` script
 ```bash
 python -m sigver.wi.test --model-path <path/to/trained_model> \
     --data-path <path/to/data> --save-path <path/to/save> \
-    --exp-users 0 300 --dev-users 300 881 --gen-for-ref 12
+    --exp-users 0 300 --dev-users 5000 7000 --gen-for-ref 12
 ```
 
 The parameter ```--gen-for-ref``` defines the number of reference signatures for each user of the exploitation set in WI approach.
