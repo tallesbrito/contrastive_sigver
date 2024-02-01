@@ -119,6 +119,7 @@ When training WD or WI classifiers, the trained_model is a .pth file (a model tr
 Pre-trained models can be found here: 
 * Multi-task Triplet loss optimized model with margin ```m=0.1```  ([link](https://github.com/tallesbrito/contrastive_sigver/blob/master/models/triplet_01/model.pth))
 * Multi-task NT-Xent loss optimized model with temperature ```t=0.01``` ([link](https://github.com/tallesbrito/contrastive_sigver/blob/master/models/ntxent_001/model.pth))
+* SigNet (Synthetic) ([link](https://github.com/tallesbrito/contrastive_sigver/blob/master/models/signet_synth/model.pth))
 
 See ```example.py``` for a complete example of how to use the models to obtain features from a signature image. 
 
